@@ -1,25 +1,41 @@
 <script setup>
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+
+const show = ref(true)
+const visible = ref(true)
+
+const onEmit = (event) => {
+  console.log('🚀 ~ onEmit ~ event', event)
+}
+
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125">
-
+    <button @click="show = !show">toggle webcom show</button>
+    <button @click="visible = !visible">toggle webcom visible</button>
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div>
   </header>
 
   <main>
-    <test-webcom>
-      test slot
-      <HelloWorld msg="You did it!" />
+    <test-webcom
+      v-if="show"
+      v-show="visible"
+      prop-string="string"
+      prop-number="1"
+      :prop-array.prop="['a', 'b']"
+      :prop-object.prop="{'a': 'a', 'b': 'b'}"
+      @test-event="onEmit"
+    >
+      <HelloWorld msg="<slot> You did it!" />
     </test-webcom>
   </main>
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
 }

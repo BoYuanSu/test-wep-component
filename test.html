@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/test-webcom.umd.js"></script>
+</head>
+
+<body>
+    <test-webcom></test-webcom>
+    <script>
+        const el = document.querySelector('test-webcom')
+        console.log('🚀 ~ el', el)
+        el.addEventListener('test-event', function (event) {
+            console.log('🚀 ~ el.addEventListener ~ event', event)
+
+        })
+        el.setAttribute('prop-array', JSON.stringify(['c', 'd']))
+        console.log('🚀 ~ el', el['array-number'])
+        el['prop-array'] = ['e', 'f']
+    </script>
+</body>
+
+</html>
