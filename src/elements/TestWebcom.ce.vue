@@ -6,6 +6,8 @@ const props = defineProps({
   propNumber: { type: Number },
   propArray: { type: Array, default: () => [] },
   propObject: { type: Object, default: () => ({}) },
+  test: { type: Object, default: () => ({}) },
+  'test-object': { type: Object, default: () => ({}) },
 })
 
 const count = ref(0)
@@ -47,9 +49,15 @@ onUpdated(() => {
     </p>
     <p>
       propArray: {{ propArray }}
+      <span v-for="i in propArray" :key="i">
+        {{ i }} |
+      </span>
     </p>
     <p>
       propObject: {{ propObject }}
+      <span v-for="(i, key) in propObject" :key="i">
+        {{ i }} | {{ key }}
+      </span>
     </p>
   </div>
 </template>

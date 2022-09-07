@@ -10,17 +10,28 @@
 </head>
 
 <body>
-    <test-webcom></test-webcom>
+    <test-webcom prop-number="100"></test-webcom>
+    <button class="update-prop">change data</button>
     <script>
         const el = document.querySelector('test-webcom')
         console.log('🚀 ~ el', el)
         el.addEventListener('test-event', function (event) {
             console.log('🚀 ~ el.addEventListener ~ event', event)
-
         })
-        el.setAttribute('prop-array', JSON.stringify(['c', 'd']))
+        // el.setAttribute('prop-array', JSON.stringify(['c', 'd']))
         console.log('🚀 ~ el', el['array-number'])
-        el['prop-array'] = ['e', 'f']
+        const data = ['e', 'f']
+        el.test = data
+        // el.propArray = data
+        console.log('🚀 ~ el', el)
+
+        const btn = document.querySelector('.update-prop')
+        btn.addEventListener('click', function(){
+            el.propArray = data
+        })
+        // const el2 = document.createElement('test-webcom')
+        // el2.propArray = data
+        // document.body.appendChild(el2)
     </script>
 </body>
 
